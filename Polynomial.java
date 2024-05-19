@@ -13,20 +13,20 @@ public class Polynomial {
 		}
 	}
 	public Polynomial add(Polynomial poly) {
+		Polynomial new_poly;
 		if (coeff.length > poly.coeff.length) {
-			Polynomial new_poly;
-			new_poly = new Polynomial();
-			new_poly.coeff = new double[coeff.length];
+			new_poly = new Polynomial(coeff);
 			for (int i=0;i<poly.coeff.length;i++) {
 				new_poly.coeff[i] += poly.coeff[i];
 			}
-			return new_poly;
 		}
-		// else
-		for (int i=0;i<this.coeff.length;i++) {
-			poly.coeff[i] += this.coeff[i];
+		else {
+			new_poly = new Polynomial(poly.coeff);
+			for (int i=0;i<coeff.length;i++) {
+				new_poly.coeff[i] += coeff[i];
+			}
 		}
-		return poly;
+		return new_poly;
 	}
 	public double evaluate(double x) {
 		double sum = coeff[0];
